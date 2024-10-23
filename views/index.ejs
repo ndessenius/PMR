@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+  <html lang="fr">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FICHE INTERVENTION PMR DSO | <%= dateInput %></title>
+    <link href="/styles.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-gray-100">
+
+    <div class="container mx-auto mt-10">
+      <h1 class="text-3xl text-gray-400 font-medium text-center font-sans">FICHE INTERVENTION PMR DSO | <%= dateInput %>
+      </h1>
+
+  
+<h2><a href="/export-pdf" class="btn btn-primary">Exporter en PDF</a>
+</h2>
+
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+        
+
+
+        <table class="w-full text-sm text-center divide-gray-200 rtl:text-right font-sans">
+          <thead class="uppercase bg-gray-50">
+            <tr class="font-semibold text-blue-900 ">
+              <th scope="col" class="group px-6 py-3 text-center   uppercase tracking-wider  ">Train</th>
+              <th scope="col" class="group px-6 py-3 text-center   uppercase tracking-wider ">Heure Départ</th>
+              <th scope="col" class="group px-6 py-3 text-center   uppercase tracking-wider ">Gare Départ</th>
+              <th scope="col" class="group px-6 py-3 text-center   uppercase tracking-wider ">Assistance Départ</th>
+              <th scope="col" class="group px-6 py-3 text-center   uppercase tracking-wider ">Heure Arrivée</th>
+              <th scope="col" class="group px-6 py-3 text-center   uppercase tracking-wider ">Gare Arrivée</th>
+              <th scope="col" class="group px-6 py-3 text-center   uppercase tracking-wider ">Assistance Arrivée</th>
+              <th scope="col" class="group px-6 py-3 text-center   uppercase tracking-wider ">Client</th>
+              <th scope="col" class="group px-6 py-3 text-center   uppercase tracking-wider ">Nombre</th>
+              <th scope="col" class="group px-6 py-3 text-center   uppercase tracking-wider ">Type</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-100">
+            <% uniqueItems.forEach(entry => { %>
+            <tr class="<%= entry.Train === 'TAXI' ? 'bg-yellow-50' : '' %>">
+              <th scope="row" class="px-6 py-4 font-bold whitespace-nowrap"><%= entry.Train %></th>
+              <td class="px-6 py-4 whitespace-nowrap"><%= entry['Heure Départ'] %></td>
+              <td class="px-6 py-4 whitespace-nowrap"><%= entry['Gare Départ'] %></td>
+              <td
+                class="px-6 py-4 whitespace-nowrap <%= entry['Assistance Départ'] === 'N' ? 'font-bold bg-red-300 rounded-md' : 'font-medium' %>">
+                <%= entry['Assistance Départ'] %>
+              </td>
+
+              <td class="px-6 py-4 whitespace-nowrap"><%= entry['Heure Arrivée'] %></td>
+              <td class="px-6 py-4 whitespace-nowrap"><%= entry['Gare Arrivée'] %></td>
+              <td
+                class="px-6 py-4 whitespace-nowrap <%= entry['Assistance Arrivée'] === 'N' ? 'font-bold bg-red-300 rounded-md' : 'font-medium' %>">
+                <%= entry['Assistance Arrivée'] %></td>
+              <td class="px-6 py-4 whitespace-nowrap"><%= entry.Client %></td>
+              <td class="px-6 py-4 whitespace-nowrap"><%= entry.Nombre %></td>
+              <td class="px-6 py-4 whitespace-nowrap test-center">
+
+                <% if (entry.Type === 'Full') { %>
+                <svg color="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.333 32" width="32.333"
+                  height="32">
+                  <g xmlns="http://www.w3.org/2000/svg" transform="matrix(0 1 -1 0 32.333 -0)">
+                    <g id="ic_wheelchair_fix" data-name="ic_wheelchair fix" transform="translate(13 -8)">
+                      <rect id="Rectangle_1644" data-name="Rectangle 1644" width="32" height="32.333"
+                        transform="translate(-13 8)" fill="none"></rect>
+                      <path id="Tracé_5214" data-name="Tracé 5214"
+                        d="M15.334,12.445a.708.708,0,0,0,.43-.167.568.568,0,0,0,.174-.362l-.02-2.034a.591.591,0,0,0-.181-.419.679.679,0,0,0-.434-.175h0A5.545,5.545,0,0,1,11.508,7.58L10.12,6.068a2.794,2.794,0,0,0-.87-.64h0a2.745,2.745,0,0,0-.7-.253,2.572,2.572,0,0,0,2.059-2.832A2.748,2.748,0,0,0,7.889-.011a2.618,2.618,0,0,0-2.673,2.3A2.694,2.694,0,0,0,7.331,5.163,2.65,2.65,0,0,0,5.253,7.776l.026,2.655-.056-.054a.632.632,0,0,0-.6-.113A5.577,5.577,0,0,0,0,16.16,5.919,5.919,0,0,0,5.514,21.5a5.7,5.7,0,0,0,6.1-4.472.55.55,0,0,0-.127-.494v-.054l1.174.011.045,4.5a.614.614,0,0,0,.615.595l2.1.02a.585.585,0,0,0,.6-.583l-.056-5.6a2.734,2.734,0,0,0-2.74-2.639l-2.548-.025-.018-1.777a9.7,9.7,0,0,0,4.666,1.469ZM7.856,1.185a1.506,1.506,0,0,1,1.51,1.46A1.437,1.437,0,0,1,7.885,4.076a1.506,1.506,0,0,1-1.51-1.46A1.447,1.447,0,0,1,7.856,1.185Zm5.4,14.13L8,15.265a1.518,1.518,0,0,1-1.51-1.46L6.427,7.8A1.48,1.48,0,0,1,7.763,6.291a1.579,1.579,0,0,1,.9.191h.089a1.671,1.671,0,0,1,.435.315l1.377,1.469A6.88,6.88,0,0,0,14.7,10.341l.008.835a8.927,8.927,0,0,1-4.282-1.851.63.63,0,0,0-.643-.081.574.574,0,0,0-.349.532l.035,3.512a.614.614,0,0,0,.615.584l3.157.03a1.518,1.518,0,0,1,1.51,1.46l.051,5.107-.886-.009-.045-4.5a.587.587,0,0,0-.162-.453.632.632,0,0,0-.454-.2ZM5.943,20.384a4.727,4.727,0,0,1-4.632-3.725,4.381,4.381,0,0,1,2.884-5l.009.942a3.536,3.536,0,0,0-2.026,3.8,3.8,3.8,0,0,0,3.183,3.077,3.722,3.722,0,0,0,3.931-1.957l.941.009a4.561,4.561,0,0,1-4.291,2.849Zm2.065-3.941.454,0a.572.572,0,0,0-.153.234,2.5,2.5,0,0,1-2.677,1.6,2.57,2.57,0,0,1-2.261-2.194A2.4,2.4,0,0,1,5.033,13.5a.649.649,0,0,0,.231-.148l0,.439a2.734,2.734,0,0,0,2.74,2.649Z"
+                        transform="matrix(-0.259, -0.966, 0.966, -0.259, -5.217, 37.299)" fill="#c27710"></path>
+                      <g id="Tracé_6494" data-name="Tracé 6494" transform="translate(9.559 36.827) rotate(-90)"
+                        fill="none">
+                        <path d="M25.084,0V7.5H0Z" stroke="none"></path>
+                        <path
+                          d="M 24.08398246765137 1.342884063720703 L 6.832807540893555 6.502924919128418 L 24.08398246765137 6.502924919128418 L 24.08398246765137 1.342884063720703 M 25.08398246765137 -5.245208740234375e-06 L 25.08398246765137 7.502924919128418 L 3.814697265625e-06 7.502924919128418 L 25.08398246765137 -5.245208740234375e-06 Z"
+                          stroke="none" fill="#c27710"></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+                <% } else if (entry.Type === 'Light') { %>
+                <div class="MuiListItemIcon-root css-1f8bwsm"><svg color="green" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24.369 22.867" width="24.369" height="22.867">
+                    <g xmlns="http://www.w3.org/2000/svg" transform="matrix(0 1 -1 0 24.369 -0)">
+                      <g id="Groupe_15211" data-name="Groupe 15211" transform="translate(31.538 -560.189)">
+                        <g id="noun-walk-4664645-FFFFFF" transform="translate(-24.598 553.484)">
+                          <path id="Tracé_6495" data-name="Tracé 6495"
+                            d="M11.324,3.5a.3.3,0,0,0-.087-.032A7.08,7.08,0,0,1,8.768,2.6a4.25,4.25,0,0,1-.711-.932A4.767,4.767,0,0,0,7.419.8a2.815,2.815,0,0,0-3.8-.119L3.608.694.951,3.249a2.038,2.038,0,0,0-.59,1.194L.206,6.473a.941.941,0,0,0,.818.984l.629.082a.93.93,0,0,0,.121.008.914.914,0,0,0,.908-.766v0l.195-1.405a.272.272,0,0,0,0-.038c0-.118.07-.468.718-1.18.1-.109.2-.211.291-.3V7.8a2.043,2.043,0,0,0,.056.441A.279.279,0,0,0,3.9,8.32l-.669,2.267a5.55,5.55,0,0,1-.447,1.025L.128,15.238l-.015.022a.629.629,0,0,0-.039.653.663.663,0,0,0,.6.3H1.685a1.63,1.63,0,0,0,1.2-.608L5.341,12.8a.26.26,0,0,0,.019-.024,3.948,3.948,0,0,0,.526-1.186l.03-.134,2.822,4.129a1.6,1.6,0,0,0,1.2.628h.692a.751.751,0,0,0,.616-.286.712.712,0,0,0,.087-.66.277.277,0,0,0-.017-.041L8,8.863A4.2,4.2,0,0,1,7.828,7.8V5.02l3.283.769.009,0a.856.856,0,0,0,.986-.556,1.442,1.442,0,0,0-.782-1.73ZM5.317,11.463a3.414,3.414,0,0,1-.429.975l-2.458,2.8a.27.27,0,0,0-.019.024,1.041,1.041,0,0,1-.726.374H.671a.243.243,0,0,1-.088-.013.212.212,0,0,1,.027-.071l2.659-3.625.015-.022a6.009,6.009,0,0,0,.51-1.165L4.287,9.07,5.467,10.8Zm6.245-6.429a.273.273,0,0,1-.32.2L7.6,4.383h0a.3.3,0,0,0-.065-.007.288.288,0,0,0-.291.284V7.8A4.687,4.687,0,0,0,7.452,9.06.27.27,0,0,0,7.47,9.1l3.317,6.358a.155.155,0,0,1-.01.132.178.178,0,0,1-.144.051H9.94a1.02,1.02,0,0,1-.718-.375L4.764,8.743A2.039,2.039,0,0,1,4.47,7.8V3.188A.288.288,0,0,0,4.179,2.9a.294.294,0,0,0-.189.068h0a9.859,9.859,0,0,0-.823.8A2.7,2.7,0,0,0,2.3,5.314L2.1,6.7a.339.339,0,0,1-.375.275L1.1,6.894a.367.367,0,0,1-.315-.378l.155-2.03a1.466,1.466,0,0,1,.408-.821l.007-.007L4.009,1.106a2.226,2.226,0,0,1,2.982.08,4.237,4.237,0,0,1,.565.775A4.786,4.786,0,0,0,8.356,3a4.13,4.13,0,0,0,1.64.75c.493.143.933.237,1.077.267a.874.874,0,0,1,.489,1.015Z"
+                            transform="translate(-2.015 19.325) rotate(-90)" fill="#2b7c2b" stroke="#2b7c2b"
+                            stroke-width="0.8"></path>
+                          <path id="Tracé_6496" data-name="Tracé 6496"
+                            d="M2.333,4.665A2.333,2.333,0,1,0,0,2.333,2.335,2.335,0,0,0,2.333,4.665Zm0-4.034a1.7,1.7,0,1,1-1.7,1.7A1.7,1.7,0,0,1,2.333.631Z"
+                            transform="translate(-6.54 11)" fill="#2b7c2b" stroke="#2b7c2b" stroke-width="0.8"></path>
+                        </g>
+                        <g id="noun-walk-4664645-FFFFFF-2" data-name="noun-walk-4664645-FFFFFF"
+                          transform="translate(-23.265 564.824)">
+                          <path id="Tracé_6495-2" data-name="Tracé 6495"
+                            d="M11.324,3.5a.3.3,0,0,0-.087-.032A7.08,7.08,0,0,1,8.768,2.6a4.25,4.25,0,0,1-.711-.932A4.767,4.767,0,0,0,7.419.8a2.815,2.815,0,0,0-3.8-.119L3.608.694.951,3.249a2.038,2.038,0,0,0-.59,1.194L.206,6.473a.941.941,0,0,0,.818.984l.629.082a.93.93,0,0,0,.121.008.914.914,0,0,0,.908-.766v0l.195-1.405a.272.272,0,0,0,0-.038c0-.118.07-.468.718-1.18.1-.109.2-.211.291-.3V7.8a2.043,2.043,0,0,0,.056.441A.279.279,0,0,0,3.9,8.32l-.669,2.267a5.55,5.55,0,0,1-.447,1.025L.128,15.238l-.015.022a.629.629,0,0,0-.039.653.663.663,0,0,0,.6.3H1.685a1.63,1.63,0,0,0,1.2-.608L5.341,12.8a.26.26,0,0,0,.019-.024,3.948,3.948,0,0,0,.526-1.186l.03-.134,2.822,4.129a1.6,1.6,0,0,0,1.2.628h.692a.751.751,0,0,0,.616-.286.712.712,0,0,0,.087-.66.277.277,0,0,0-.017-.041L8,8.863A4.2,4.2,0,0,1,7.828,7.8V5.02l3.283.769.009,0a.856.856,0,0,0,.986-.556,1.442,1.442,0,0,0-.782-1.73ZM5.317,11.463a3.414,3.414,0,0,1-.429.975l-2.458,2.8a.27.27,0,0,0-.019.024,1.041,1.041,0,0,1-.726.374H.671a.243.243,0,0,1-.088-.013.212.212,0,0,1,.027-.071l2.659-3.625.015-.022a6.009,6.009,0,0,0,.51-1.165L4.287,9.07,5.467,10.8Zm6.245-6.429a.273.273,0,0,1-.32.2L7.6,4.383h0a.3.3,0,0,0-.065-.007.288.288,0,0,0-.291.284V7.8A4.687,4.687,0,0,0,7.452,9.06.27.27,0,0,0,7.47,9.1l3.317,6.358a.155.155,0,0,1-.01.132.178.178,0,0,1-.144.051H9.94a1.02,1.02,0,0,1-.718-.375L4.764,8.743A2.039,2.039,0,0,1,4.47,7.8V3.188A.288.288,0,0,0,4.179,2.9a.294.294,0,0,0-.189.068h0a9.859,9.859,0,0,0-.823.8A2.7,2.7,0,0,0,2.3,5.314L2.1,6.7a.339.339,0,0,1-.375.275L1.1,6.894a.367.367,0,0,1-.315-.378l.155-2.03a1.466,1.466,0,0,1,.408-.821l.007-.007L4.009,1.106a2.226,2.226,0,0,1,2.982.08,4.237,4.237,0,0,1,.565.775A4.786,4.786,0,0,0,8.356,3a4.13,4.13,0,0,0,1.64.75c.493.143.933.237,1.077.267a.874.874,0,0,1,.489,1.015Z"
+                            transform="translate(-2.015 19.325) rotate(-90)" fill="#2b7c2b" stroke="#2b7c2b"
+                            stroke-width="0.8"></path>
+                          <path id="Tracé_6496-2" data-name="Tracé 6496"
+                            d="M2.333,4.665A2.333,2.333,0,1,0,0,2.333,2.335,2.335,0,0,0,2.333,4.665Zm0-4.034a1.7,1.7,0,1,1-1.7,1.7A1.7,1.7,0,0,1,2.333.631Z"
+                            transform="translate(-6.54 11)" fill="#2b7c2b" stroke="#2b7c2b" stroke-width="0.8"></path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg></div>
+                <% } %>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+     <!-- Après la table -->
+
+   
+
+    </div>
+
+  </body>
+
+  </html>
